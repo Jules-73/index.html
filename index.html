@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Node.js Frontend</title>
+</head>
+<body>
+    <h1>Node.js et Page Web</h1>
+    <button id="runButton">Exécuter le script Node.js</button>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('runButton').addEventListener('click', async function() {
+            try {
+                const response = await fetch('http://localhost:3000/api/exec');
+                const data = await response.json();
+                document.getElementById('result').textContent = data.message;
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        });
+    </script>
+</body>
+</html>
